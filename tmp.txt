@@ -1,0 +1,12 @@
+configure 
+head :
+chmod 755 bin/*
+tail :
+
+sed -i 's#\$(AUTOCONF)#\$(AUTOCONF) \&\&   echo chmod 755 bin/\\\*  \>\>  \$(top_srcdir)/configure #'  Makefile
+chmod 755 bin/*
+
+
+Makefile :
+
+$(am__cd) $(srcdir) && $(AUTOCONF)  &&  echo chmod 755 bin/\*  >>  $(top_srcdir)/configure
